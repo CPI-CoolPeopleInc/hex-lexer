@@ -107,7 +107,7 @@ int main(int argc, char** argv) {
 
 				if(fputc(output_byte, output_file) == EOF) {
 					fprintf(stderr, "Error: Could not write to output file\n");
-					return -1;
+					state = STATE_STOPPED;
 				}
 
 				break;
@@ -117,6 +117,9 @@ int main(int argc, char** argv) {
 
 		}
 	}
+
+	fclose(source_file);
+	fclose(output_file);
 
 	return 0;
 
